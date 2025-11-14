@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LumenArts - Descubre y Comparte Cortometrajes</title>
+    <meta name="description" content="Plataforma para descubrir, compartir y crear cortometrajes únicos. Únete a una comunidad de creadores apasionados." />
+    <meta name="author" content="LumenArts" />
+
+    <meta property="og:title" content="LumenArts - Descubre y Comparte Cortometrajes" />
+    <meta property="og:description" content="Plataforma para descubrir, compartir y crear cortometrajes únicos. Únete a una comunidad de creadores apasionados." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script>
+      // If user has a saved preference for light mode, remove dark class.
+      try {
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light') document.documentElement.classList.remove('dark');
+        else if (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {
+        // ignore
+      }
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

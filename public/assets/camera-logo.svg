@@ -1,0 +1,43 @@
+<svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .camera-fill { fill: currentColor; }
+      .camera-stroke { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  
+  <!-- Left lens outer circle -->
+  <circle cx="30" cy="30" r="15" class="camera-stroke"/>
+  <!-- Left lens inner circle -->
+  <circle cx="30" cy="30" r="10" class="camera-stroke"/>
+  <!-- Left lens center dot -->
+  <circle cx="30" cy="30" r="2" class="camera-fill"/>
+  
+  <!-- Right lens outer circle -->
+  <circle cx="70" cy="30" r="15" class="camera-stroke"/>
+  <!-- Right lens inner circle -->
+  <circle cx="70" cy="30" r="10" class="camera-stroke"/>
+  <!-- Right lens spiral -->
+  <path d="M 65 30 Q 70 25 75 30 Q 70 35 65 30" class="camera-stroke"/>
+  
+  <!-- Connection bridge between lenses -->
+  <path d="M 45 30 L 55 30" class="camera-stroke"/>
+  
+  <!-- Camera body main rectangle -->
+  <rect x="20" y="45" width="60" height="25" rx="3" class="camera-stroke"/>
+  
+  <!-- Viewfinder -->
+  <rect x="40" y="50" width="20" height="6" rx="2" class="camera-stroke"/>
+  <circle cx="43" cy="53" r="1" class="camera-fill"/>
+  
+  <!-- Camera base/tripod mount -->
+  <rect x="25" y="70" width="50" height="6" rx="3" class="camera-stroke"/>
+  
+  <!-- Support legs -->
+  <line x1="35" y1="76" x2="35" y2="85" class="camera-stroke"/>
+  <line x1="50" y1="76" x2="50" y2="85" class="camera-stroke"/>
+  <line x1="65" y1="76" x2="65" y2="85" class="camera-stroke"/>
+  
+  <!-- Base platform -->
+  <line x1="30" y1="85" x2="70" y2="85" class="camera-stroke"/>
+</svg>

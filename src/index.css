@@ -1,0 +1,435 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Paleta Minimalista: Gris, Rojo, Blanco y Negro */
+    --background: 0 0% 8%; /* #141414 - Negro suave */
+    --foreground: 0 0% 95%; /* #F2F2F2 - Blanco suave */
+
+    --card: 0 0% 12%; /* #1F1F1F - Gris muy oscuro */
+    --card-foreground: 0 0% 95%; /* #F2F2F2 - Blanco suave */
+
+    --popover: 0 0% 10%; /* #1A1A1A - Negro más suave */
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 84% 60%; /* #E53E3E - Rojo principal */
+    --primary-foreground: 0 0% 100%; /* Blanco puro sobre rojo */
+
+    --secondary: 0 0% 45%; /* #737373 - Gris medio */
+    --secondary-foreground: 0 0% 100%; /* Blanco sobre gris */
+
+    --muted: 0 0% 25%; /* #404040 - Gris oscuro */
+    --muted-foreground: 0 0% 75%; /* #BFBFBF - Gris más claro para mejor contraste */
+
+    --accent: 0 0% 20%; /* #333333 - Gris oscuro en lugar de claro */
+    --accent-foreground: 0 0% 95%; /* Blanco sobre gris oscuro */
+
+    --destructive: 0 84% 60%; /* #E53E3E - Rojo para errores */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%; /* #333333 - Gris para bordes */
+    --input: 0 0% 15%; /* #262626 - Gris oscuro para inputs */
+    --ring: 0 84% 60%; /* Rojo para focus ring */
+
+    --success: 0 0% 80%; /* #CCCCCC - Gris claro para éxito */
+    --highlight: 0 84% 60%; /* #E53E3E - Rojo para resaltado */
+
+    --radius: 0.75rem;
+
+    /* Gradientes Minimalistas */
+    --gradient-primary: linear-gradient(135deg, #E53E3E, #B91C1C);
+    --gradient-secondary: linear-gradient(135deg, #737373, #525252);
+    --gradient-hero: linear-gradient(180deg, #0A0A0A, #1A1A1A);
+    --gradient-card: linear-gradient(135deg, #1F1F1F, #2A2A2A);
+    --gradient-cinema: linear-gradient(45deg, #E53E3E, #B91C1C, #737373);
+    --gradient-highlight: linear-gradient(135deg, #E53E3E, #DC2626);
+
+    /* Sombras Minimalistas */
+    --shadow-glow: 0 0 40px rgba(229, 62, 62, 0.3);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.8);
+    --shadow-cinema: 0 0 60px rgba(229, 62, 62, 0.2);
+  }
+}
+
+/* Light mode override (optional) */
+.light {
+  --background: 0 0% 98%;
+  --foreground: 0 0% 8%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 8%;
+  --primary: 43 96% 56%;
+  --primary-foreground: 0 0% 8%;
+  --secondary: 271 81% 56%;
+  --secondary-foreground: 0 0% 100%;
+  --border: 0 0% 90%;
+  --input: 0 0% 96%;
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Clases de utilidad para la paleta minimalista */
+  .text-highlight {
+    color: hsl(var(--highlight)); /* Rojo */
+  }
+  
+  .bg-highlight {
+    background-color: hsl(var(--highlight)); /* Rojo */
+  }
+  
+  .text-success {
+    color: hsl(var(--success)); /* Gris */
+  }
+  
+  .bg-success {
+    background-color: hsl(var(--success)); /* Gris */
+  }
+
+  .text-white-pure {
+    color: #FFFFFF; /* Blanco puro */
+  }
+
+  .bg-white-pure {
+    background-color: #FFFFFF; /* Blanco puro */
+  }
+
+  .text-black-pure {
+    color: #000000; /* Negro puro */
+  }
+
+  .bg-black-pure {
+    background-color: #000000; /* Negro puro */
+  }
+
+  /* Clases para mejor contraste */
+  .text-contrast-high {
+    color: #FFFFFF; /* Blanco puro para fondos oscuros */
+  }
+
+  .text-contrast-medium {
+    color: #CCCCCC; /* Gris claro para fondos oscuros */
+  }
+
+  .text-contrast-low {
+    color: #999999; /* Gris medio para fondos oscuros */
+  }
+
+  .text-dark-contrast {
+    color: #1A1A1A; /* Casi negro para fondos claros */
+  }
+
+  /* Backgrounds con mejor contraste */
+  .bg-surface {
+    background-color: hsl(var(--card)); /* Superficie oscura */
+    color: hsl(var(--card-foreground)); /* Texto claro */
+  }
+
+  .bg-surface-light {
+    background-color: #2A2A2A; /* Superficie un poco más clara */
+    color: #F2F2F2; /* Texto blanco suave */
+  }
+}
+
+@layer utilities {
+  /* Cinematic Animations */
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-in-scale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes cinema-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(229, 62, 62, 0.4); }
+    50% { box-shadow: 0 0 40px rgba(229, 62, 62, 0.7); }
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes float-cinema {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(1deg); }
+    66% { transform: translateY(5px) rotate(-1deg); }
+  }
+
+  @keyframes spotlight {
+    0% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+    100% { opacity: 0.3; transform: scale(1); }
+  }
+
+  @keyframes blob-float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+  }
+
+  @keyframes blob-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(229, 62, 62, 0.4); }
+    50% { box-shadow: 0 0 60px rgba(229, 62, 62, 0.8); }
+  }
+
+  @keyframes text-shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fade-in-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  .animate-fade-in-scale {
+    animation: fade-in-scale 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  .animate-cinema-glow {
+    animation: cinema-glow 3s ease-in-out infinite;
+  }
+
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .animate-float-cinema {
+    animation: float-cinema 6s ease-in-out infinite;
+  }
+
+  .animate-spotlight {
+    animation: spotlight 4s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-text-shimmer {
+    background-size: 200% auto;
+    animation: text-shimmer 3s linear infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  /* Hover Effects */
+  .hover-lift {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-cinema);
+  }
+
+  .hover-lift::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, transparent, rgba(229, 62, 62, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .hover-lift:hover::before {
+    opacity: 1;
+  }
+
+  .hover-glow {
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+    transform: scale(1.05);
+  }
+
+  .hover-scale {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.1);
+  }
+
+  /* Cinema Utilities */
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-cinema {
+    box-shadow: var(--shadow-cinema);
+  }
+
+  .bg-gradient-cinema {
+    background: var(--gradient-cinema);
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .bg-gradient-highlight {
+    background: var(--gradient-highlight);
+  }
+
+  /* Clases de utilidad para mejor contraste */
+  .text-primary-contrast {
+    color: hsl(var(--primary-foreground));
+  }
+
+  .text-secondary-contrast {
+    color: hsl(var(--secondary-foreground));
+  }
+
+  .text-accent-contrast {
+    color: hsl(var(--accent-foreground));
+  }
+
+  /* Utilidades responsive básicas */
+  .responsive-text {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+
+  .responsive-title {
+    @apply text-xl sm:text-2xl lg:text-3xl;
+  }
+
+  .responsive-padding {
+    @apply p-4 sm:p-6;
+  }
+
+  .responsive-margin {
+    @apply m-4 sm:m-6;
+  }
+
+  /* Padding para navegación móvil */
+  .mobile-nav-padding {
+    @apply pb-20 md:pb-0;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Hide default cursor on landing */
+  .cursor-none * {
+    cursor: none !important;
+  }
+
+  /* Ocultar elementos de YouTube */
+  iframe {
+    border: none !important;
+    outline: none !important;
+  }
+
+  /* Ocultar controles de YouTube que puedan aparecer */
+  .ytp-chrome-top,
+  .ytp-show-cards-title,
+  .ytp-pause-overlay,
+  .ytp-watermark {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  /* Decorative blobs used in Hero and other sections */
+  .bg-blob {
+    position: absolute;
+    filter: blur(36px) saturate(120%);
+    opacity: 0.9;
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
+    pointer-events: none;
+  }
+
+  .blob-1 {
+    width: 520px;
+    height: 520px;
+    left: -8%;
+    top: 12%;
+    background: radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.95), transparent 45%);
+    animation: blob-float 9s ease-in-out infinite, blob-rotate 18s linear infinite;
+    transform-origin: center;
+  }
+
+  .blob-2 {
+    width: 420px;
+    height: 420px;
+    right: -6%;
+    top: 18%;
+    background: radial-gradient(circle at 60% 40%, hsl(var(--secondary) / 0.9), transparent 40%);
+    animation: blob-float 11s ease-in-out infinite reverse;
+  }
+
+  .blob-3 {
+    width: 360px;
+    height: 360px;
+    left: 10%;
+    bottom: -8%;
+    background: radial-gradient(circle at 20% 80%, hsl(var(--accent) / 0.9), transparent 45%);
+    animation: blob-float 13s ease-in-out infinite;
+  }
+
+  /* Animated shifting gradient utility */
+  .bg-gradient-shift {
+    background-image: var(--gradient-shifting);
+    background-size: 300% 300%;
+    animation: gradient-shift 10s ease-in-out infinite;
+  }
+}
